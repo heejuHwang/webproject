@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  .container
+    h1.main-title Users 
+    if currentUser.userType=='admin'
+      table.table.table-hover
+        thead
+          tr
+            th Name
+            th Email
+            th Created At
+            th User Type
+            th
+        tbody
+          each u in users
+            tr
+              td
+                a(href=`/users/${u._id}`)= u.name
+              td= u.email
+              td= moment(u.createdAt).format('YYYY-MM-DD HH:mm:ss')
+              td= u.userType
+              td
+                a.btn.btn-sm.btn-outline-secondary(href=`/users/${u._id}/edit`) 
+                  | #[i.fa.fa-pencil] Edit
+                | 
+                a.btn.btn-sm.need-confirm-btn.btn-outline-danger(href=`/users/${u._id}?_method=DELETE`)
+                  | #[i.fa.fa-trash] Delete
+      a.btn.btn-primary(href='/users/new') #[i.fa.fa-plus] Register a new user
+    
+    else
+      h2 Only admin can access the list

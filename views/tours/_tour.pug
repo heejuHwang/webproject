@@ -1,0 +1,19 @@
+.content= tour.content
+.course= tour.course
+.cost= tour.cost
+.destination.badges
+  each d in tour.destination
+    span.badge.badge-phill.badge-secondary= d
+    | 
+.row
+  .col-sm
+    .numbers.
+      #[span.number.num-votes= tour.numLikes] likes,
+      #[span.number.num-comments= tour.numComments] comments,
+      #[span.number.num-views= tour.numReads] reads
+  .col-sm
+    .author
+      | posted on #{moment(tour.createdAt).format('YYYY-MM-DD')}
+      if tour.author
+        | 
+        | by #[a(href=`/users/${tour.author.id}`)= tour.author.name] 

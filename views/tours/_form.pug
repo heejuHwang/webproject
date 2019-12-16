@@ -1,0 +1,15 @@
+.form-group
+  label(for="title") Title
+  input.form-control(type="text", name="title", placeholder="What's your tour?", value=tour.title)
+.form-group
+  label(for="tour") Tour
+  textarea.form-control(name="content", rows="5", placeholder="Introduce your tour!")= tour.content
+.form-group 
+  label(for="course") Course
+  textarea.form-control(name="course", rows="10", placeholder="Write this tour's courses.")= tour.course
+.form-group
+  label(for="cost") Cost
+  input.form-control(type="text", name="cost", placeholder="Please write down the cost per person.", value=tour.cost)
+.form-group
+  label(for="destination") Destination
+  input.form-control(type="text", name="destination", placeholder="destination separated by spaces", value=tour.destination ? tour.destination.join(" ") : "")
